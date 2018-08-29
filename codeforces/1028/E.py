@@ -16,9 +16,10 @@ else:
 
     a = [0 for i in range(n)]
 
-    a[pos] = 2 * M
+    a[pos] = M
+    a[pos - 1] = (M << 1) + b[pos - 1]
 
-    for i in range(n):
+    for i in range(2, n):
         a[pos - i] = a[pos - i + 1] + b[pos - i]
 
     print(*a)
