@@ -1,12 +1,15 @@
-def solve(x, y, n):
-    if (x + y) % 2 == 0:
-        return (n * (x - 1) + y + 1) // 2
-    else:
-        return (n ** 2 + 1) // 2 + (n * (x - 1) + y + 1) // 2
-
+from sys import stdin
 
 n, q = map(int, input().split())
+n2 = (n**2 + 1) // 2
 
-for i in range(q):
-    xi, yi = map(int, input().split())
-    print(solve(xi, yi, n))
+l = stdin.read().splitlines()
+
+for i, s in enumerate(l):
+    x, y = map(int, s.split())
+    if (x ^ y) & 1:
+        l[i] = (n2 + (n * (x - 1) + y + 1) // 2)
+    else:
+        l[i] = (n * (x - 1) + y + 1) // 2
+
+print('\n'.join(map(str, l)))
